@@ -1,13 +1,6 @@
-
-
-
-var head;
-var apple;
-var ball;
-
-var apple_id;
-
 var dots;
+
+var score;
 
 var leftDirection = false;
 var rightDirection = true;
@@ -17,8 +10,8 @@ var inGame = true;
 
 const DOT_NUMBER = 20;
 const ALL_DOTS = 400;
-const MAX_RAND = 396;
-const MAX_RAND_SNAKE = 19;
+const MAX_RAND = 399;
+const MAX_RAND_SNAKE = 15;
 const DELAY = 500;
 const C_HEIGHT = 19;
 const C_WIDTH = 19;    
@@ -35,9 +28,7 @@ var id_old = new Array(ALL_DOTS);
 
 
 function init() {
-	
-	
-	drawingField()
+    drawingField()
     createSnake();
     locateApple();
     setTimeout("gameCycle()", DELAY);
@@ -51,7 +42,7 @@ function drawingField(){
 		for (var j=0; j < DOT_NUMBER; j++){
 
 			var newDiv = document.createElement("DIV");
-			newDiv.setAttribute("class","block")
+			newDiv.setAttribute("class","block");
 			newDiv.setAttribute("id",new_id)
 			newDiv.style.background = "blue";
 			field.appendChild(newDiv);
@@ -65,14 +56,15 @@ function drawingField(){
 
 function createSnake() {
 
+    score = 0;
     dots = 3;
-	var x_start = Math.floor(Math.random() * MAX_RAND_SNAKE);
-	var y_start = Math.floor(Math.random() * MAX_RAND_SNAKE);
+    var x_start = Math.floor(Math.random() * MAX_RAND_SNAKE);
+    var y_start = Math.floor(Math.random() * MAX_RAND_SNAKE);
     for (var z = 0; z < dots; z++) {
-		x[z] = x_start +z;
-		y[z] = y_start;
+	x[z] = x_start +z;
+	y[z] = y_start;
         id[z] = x[z]+DOT_NUMBER*y[z];
-		id_old[z]=id[z];
+	id_old[z]=id[z];
     }
 }
 
@@ -82,6 +74,7 @@ function checkApple() {
 
         dots++;
         locateApple();
+	score+=20;
     }
 }    
 
@@ -98,7 +91,7 @@ function doDrawing() {
 
         for (var z = 0; z < dots; z++) {
             var snake = document.getElementById(id[z]);
-			snake.style.backgroundColor = "black";
+	    snake.style.backgroundColor = "black";
 
         }    
     } else {
@@ -110,19 +103,19 @@ function doDrawing() {
 
 function gameOver() {
     
-    alert("Game over")
+    alert("Game over \n your score: "+score);
 	
 }
 
 function move() {
 
 	for (var z = 0; z < dots; z++) {
-		id_old[z]=id[z]
+	id_old[z]=id[z]
     }
     for (var z = dots; z > 0; z--) {
         x[z] = x[(z - 1)];
         y[z] = y[(z - 1)];
-		id[z] = id[(z - 1)];
+	id[z] = id[(z - 1)];
 		
     }
 
