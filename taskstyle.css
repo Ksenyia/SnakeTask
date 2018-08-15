@@ -1,0 +1,18 @@
+br {
+	line-height: 1px;
+}
+body{
+	background: black;
+}
+.wrapper{
+		font-size: 0px;
+		padding: 0;
+
+	}
+.block {
+	background: #ccc;
+	width: calc(100%/40);
+	height: 3vh;
+	display: inline-block;
+	border: solid 2px black;
+}
