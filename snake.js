@@ -12,7 +12,7 @@ const DOT_NUMBER = 20;
 const ALL_DOTS = 400;
 const MAX_RAND = 399;
 const MAX_RAND_SNAKE = 15;
-const DELAY = 500;
+const DELAY = 200;
 const C_HEIGHT = 19;
 const C_WIDTH = 19;    
 
